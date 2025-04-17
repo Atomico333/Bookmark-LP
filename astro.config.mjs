@@ -7,5 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+  site: 'https://Atomico333.github.io',
+  base: 'Bookmark-LP', 
 });
