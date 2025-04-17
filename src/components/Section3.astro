@@ -1,0 +1,33 @@
+---
+import CardSection3 from "../components/CardSection3.astro";
+
+const infoCards = [
+    {
+        img: "/public/assets/logo-chrome.svg",
+        h3: "Add to chrome",
+        p: "Minimus version 62",
+    },
+    {
+        img: "/public/assets/logo-firefox.svg",
+        h3: "Add to Firefox",
+        p: "Minimus version 55",
+    },
+    {
+        img: "/public/assets/logo-opera.svg",
+        h3: "Add to Opera",
+        p: "Minimus version 46",
+    },
+]
+---
+
+<section class="flex flex-col items-center px-10 justify-center">
+    <h2 class="text-[#252b46] py-2 text-[5.5cqw] font-[500]
+    md:text-[2.1cqw]">Download the extension</h2>
+    <p class="text-center pb-10 md:text-[1.2cqw] md:px-29 md:pb-5">We've got more browsers in the pipeline. Please do
+         let us know if you've got a favourite you'd like us to prioritize</p>
+    <div class="flex flex-col items-center w-[100%] md:w-auto md:flex-row  gap-[2cqw] md:[&>:nth-child(2)]:mt-[3cqw] md:[&>:nth-child(3)]:mt-[6cqw] ">
+        {infoCards.map((infoCard)=>{
+        return <CardSection3 img={infoCard.img} h3={infoCard.h3} p={infoCard.p}/>
+    })}
+    </div>
+</section>

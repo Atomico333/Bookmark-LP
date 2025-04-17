@@ -1,0 +1,98 @@
+---
+const nameButtons = [
+  {
+    buttonTitle: 'Simple Bookmarking',
+  },
+  {
+    buttonTitle: 'Speedy Searching',
+  },
+  {
+    buttonTitle: 'Easy Sharing',
+  },
+];
+
+---
+
+<section class="flex flex-col items-center py-30 md:pt-4 md:pb-15">
+    <h2 class="text-[#252b46] text-[5.5cqw] font-[500] px-10 md:text-[2cqw]">Features</h2>
+    <p class="pt-3 pb-10 leading-[6cqw] text-center px-10 md:text-[1.2cqw] md:px-34 md:leading-[2cqw] md:pt-1 md:pb-5 ">Our aim is to make it quick and easy for you access your 
+        favourite websites. Your bookmarks sync 
+        between your devices so you can access them on the go.</p>
+    <div id="features-div" class="px-10 pb-15 w-full text-[3.7cqw] *:after:absolute *:after:bottom-0 *:after:left-1/2 
+    *:after:-translate-x-1/2 *:after:w-1/2 *:after:h-1 *:after:bg-[#ed4f39] 
+    *:after:opacity-0 *:after:transition-opacity *:after:duration-300 
+    *:hover:after:opacity-100 flex flex-col *:py-4 *:border-y-[1px]
+     *:border-[#e1e3f0] *:text-[#252b46] font-[350] *:cursor-pointer 
+     *:relative *:p-4 *:text-center *:after:content-['']
+     md:flex-row md:text-[1.2cqw] md:justify-center md:*:p-[1.5cqw] md:*:after:w-full
+     md:*:after:h-[.2cqw] md:*:w-[18cqw] md:pb-7" >
+        {nameButtons.map((feature, index)=>{
+            if (index === 0) {
+                return <button class="after:opacity-100!">{feature.buttonTitle}</button>
+            }
+            return <button>{feature.buttonTitle}</button>
+        })}
+    </div>
+    <div class="md:flex md:w-[100%] ">
+        <div class="relative h-67 w-full flex justify-center md:h-33 md:w-[50cqw] ">
+            <img id="img-feature" class="w-[86%] h-[94%] z-2 md:max-w-[50cqw] md:w-[90%] md:pl-[3cqw]" src="/public/assets/illustration-features-tab-1.svg" alt="features tab 1">
+            <div class="bg-[#5368df]  absolute w-[85%] h-[92%] left-0 -bottom-5 rounded-br-[23cqw] md:max-w-[50cqw] md:rounded-br-[11cqw]"></div>
+        </div>
+        <div class="px-9 md:w-[50cqw]">
+            <h2 id="h2-feature" class="text-[#252b46] text-[5.5cqw] text-center font-[500] pt-16 pb-4 md:text-[2cqw] md:text-left md:pt-5 md:pb-1">Bookmark in one click</h2>
+            <p id="p-feature" class="text-center md:text-left md:text-[1.2cqw]">Organize your bookmarks however you like. Our simple drag-and-drop interface gives
+                you complete control over how you manage your favourite sites.
+            </p>
+            <button class="hidden md:block md:text-[1.2cqw] md:mt-2 md:px-2 bg-[#5368df] text-white font-[440] py-[.6cqw] rounded-[.3cqw] cursor-pointer ">More Info</button>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    const features = [ 
+    {
+        title: "Bookmark in one click",
+        description: "Organize your bookmarks however you like. Our simple drag-and-drop interface gives you complete control over how you manage your favourite sites.",
+        image: "/public/assets/illustration-features-tab-1.svg",
+    },
+    {
+        title: "Intelligent search",
+        description: "Our powerful search feature will help you find saved sites in no time at all. No need to trawl through all of your bookmarks.",
+        image: "/public/assets/illustration-features-tab-2.svg",
+    },
+    {
+        title: "Share your bookmarks",
+        description: "Easily share your bookmarks and collections with others. Create a shareable link that you can send at the click of a button.",
+        image: "/public/assets/illustration-features-tab-3.svg",
+    },
+    ];
+
+    let selectedIndex = 0;  
+    const buttons = document.querySelectorAll('#features-div button');
+    const imgElem = document.getElementById('img-feature') as HTMLImageElement;
+    const h2Elem = document.getElementById('h2-feature');
+    const pElem = document.getElementById('p-feature');
+    buttons.forEach((button, index)=>{
+        button.addEventListener('click',()=>{
+            selectedIndex = index;
+            button.classList.add('after:opacity-100!');
+            imgElem.src = features[index].image;
+            h2Elem.textContent = features[index].title;
+            pElem.textContent = features[index].description;
+            imgElem.classList.add('animate-slideInLeft');
+            h2Elem.classList.add('animate-fadeText');
+            pElem.classList.add('animate-fadeText');
+            setTimeout(()=>{
+                imgElem.classList.remove('animate-slideInLeft');
+                pElem.classList.remove('animate-fadeText');
+                h2Elem.classList.remove('animate-fadeText');
+            }, 500)
+            buttons.forEach((btn, i) => {
+                if (i !== index) {
+                    btn.classList.remove('after:opacity-100!');
+                }
+            });
+        });
+    });
+</script>

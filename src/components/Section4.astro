@@ -1,0 +1,57 @@
+---
+import ArticleSection4 from './ArticleSection4.astro'
+const infoArticles = [
+    {
+        title: 'What is Bookmark',
+        content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit impedit laboriosam vel mollitia sapiente possimus corrupti, magnam dignissimos temporibus enim facilis voluptates porro ipsam sit sunt adipisci saepe eaque magni!'
+    },
+    {
+        title: 'How can I request a new browser',
+        content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit impedit laboriosam vel mollitia sapiente possimus corrupti, magnam dignissimos temporibus enim facilis voluptates porro ipsam sit sunt adipisci saepe eaque magni!'
+    },
+    {
+        title: 'Is there a mobile app',
+        content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit impedit laboriosam vel mollitia sapiente possimus corrupti, magnam dignissimos temporibus enim facilis voluptates porro ipsam sit sunt adipisci saepe eaque magni!'
+    },
+    {
+        title: 'What about other Chromium browsers',
+        content: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit impedit laboriosam vel mollitia sapiente possimus corrupti, magnam dignissimos temporibus enim facilis voluptates porro ipsam sit sunt adipisci saepe eaque magni!'
+    },
+
+]
+---
+
+<section class="flex flex-col px-10 pt-[25cqw] items-center pb-50 md:pt-[10cqw] md:pb-14">
+    <h2 class="text-[#252b46] text-[6cqw] font-[500] leading-8 text-center pb-[5cqw]
+    md:text-[2cqw] md:pb-2 md:leading-[2cqw]">Frequently Asked Questions</h2>
+    <p class="text-center md:text-[1.2cqw] md:px-30 ">Here are some of our FAQs. If you have any other 
+        questions you'd like answered please feel free to email us.</p>
+    <div class="flex flex-col pt-[12cqw] w-full md:pt-[5cqw] md:[&>*:first-child]:border-t-[#b8b8bb9c] md:[&>*:first-child]:border-t-[1px]  ">
+        {infoArticles.map((article) => {
+            return <ArticleSection4 title={article.title} content={article.content} />
+        })}
+    </div>
+    <button class="mt-12 py-[2cqw] w-[30cqw] bg-[#5368df] rounded-sm text-white px-[4cqw] font-[500] cursor-pointer
+    md:py-[.7cqw] md:px-[1.7cqw] md:rounded-[.3cqw] md:mt-[4cqw] md:w-[auto] md:text-[1.2cqw]">More Info</button>
+</section>
+
+
+<script>
+    const buttons = document.querySelectorAll('#expandButton');
+    const buttonIcon = document.querySelectorAll('#buttonIcon');
+    const pContainer = document.querySelectorAll('#pContainer')
+    let activeFlag = [false,false,false,false];
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', () =>{
+            pContainer[index].classList.toggle('grid-rows-[0fr]');
+            pContainer[index].classList.toggle('grid-rows-[1fr]');
+            if(!activeFlag[index]){
+                (buttonIcon[index] as HTMLImageElement).src = "/public/assets/arrow-up-337-svgrepo-com.svg";
+            }else{
+                (buttonIcon[index] as HTMLImageElement).src = "/public/assets/icon-arrow.svg";
+            }
+            activeFlag[index] = !activeFlag[index];
+            
+        })
+    })
+</script>

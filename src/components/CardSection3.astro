@@ -1,0 +1,15 @@
+---
+const {img, h3, p } = Astro.props;
+---
+
+<div class="flex flex-col items-center w-[90%] pt-[12cqw] pb-[5.5cqw] mb-[8cqw] rounded-[4cqw] shadow-[0px_10px_15px_.5px_rgba(34,88,200,0.2)]
+            hover:shadow-[0px_10px_20px_10px_rgba(34,88,200,0.19)] transition duration-200 transition-box-shadow
+            md:pt-[4cqw] md:pb-0 md:rounded-[.8cqw] md:mb-0 md:h-[29cqw]">
+    <img  class='w-[32%] md:w-[8cqw]' src={img} alt="">
+    <h2 class="pt-[7cqw] text-[#252b46] text-[4.7cqw] font-[500] md:text-[1.8cqw] 
+    md:pt-[2cqw]">{h3}</h2>
+    <p class="pb-[10cqw] md:text-[1.1cqw] md:pb-[3.7cqw]">{p}</p>
+    <div class="bg-[url('/public/assets/dot-small-svgrepo-com.svg')] bg-center w-full h-5 bg-contain md:h-[1.2cqw]"></div>
+    <button class="mt-[4cqw] mx-[4cqw] cursor-pointer py-[2.5cqw] text-white w-[60cqw] rounded-[1cqw] font-[450] bg-[#5368df]
+    md:py-[.7cqw] md:px-[4cqw] md:text-[1.1cqw] md:rounded-[.4cqw] md:mx-[2cqw] md:mt-[1.3cqw] md:w-[auto] ">Add & Install Extension</button>
+</div>
